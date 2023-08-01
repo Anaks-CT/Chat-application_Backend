@@ -2,11 +2,11 @@ import dotenv from 'dotenv'
 import connectDB from './conifg/database.js';
 import express, { urlencoded } from 'express';
 import user from './routes/user.js';
+import chat from './routes/chat.js';
 import notFound from './middleware/urlNotFound.js';
 import errorHandler from './middleware/errorHandler.js';
 import cors from 'cors'
 import morgan from 'morgan';
-import authMiddleware from "./middleware/authMiddleware.js"
 
 dotenv.config();
 connectDB();
@@ -22,10 +22,10 @@ app.use(
 app.use(morgan('combined'));
 app.use(express.json()); // to accept json data
 
-app.use(authMiddleware)
 
 // route
 app.use('/api/user', user)
+app.use("/api/chat", chat)
 
 
 // Error Handling middlewares
