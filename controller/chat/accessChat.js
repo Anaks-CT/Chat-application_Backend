@@ -53,6 +53,7 @@ const accessChat = asyncHandler(async (req, res) => {
       );
       res.status(200).json(FullChat);
     } catch (error) {
+      console.log(error)
       res.status(400);
       throw new Error(error.message);
     }
